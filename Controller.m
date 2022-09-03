@@ -2,6 +2,8 @@ classdef Controller
 
     properties (Access = private)
         pRPLIDAR = CreateRPLIDAR();
+
+        % edit according to port etc.
         config_file_path = 'config.txt';
     end
 
@@ -9,6 +11,7 @@ classdef Controller
 
         function obj = Controller(~)
             addpath('Hardware-MATLAB')
+            addpath('Hardware-MATLAB/linux_x64')
         end
 
         function obj = SwitchConnection(obj, value)
@@ -35,15 +38,11 @@ classdef Controller
 
         function [x, y] = Scan(obj)
             disp('Scan')
-            x = [];
-            y = [];
 
-            for i = 1:10
-                [result, distance, angle, bNewScan, quality] = GetScanDataResponseRPLIDAR(obj.pRPLIDAR);
-                x = [x, distance * cos(angle)];
-                y = [y, distance * sin(angle)];
-            end
-
+            % TODO support for multiple measurements
+            [result, distance, angle, bNewScan, quality] = GetScanDataResponseRPLIDAR(obj.pRPLIDAR);
+            x = distance * cos(angle);
+            y = distance * sin(angle);
         end
 
         function Destructor(~)
