@@ -1,7 +1,8 @@
 % Server TCP port (e.g. :4001), client IP address and TCP port (e.g. 127.0.0.1:4001) or local RS232 port
 %127.0.0.1:55555
-COM9
-%/dev/ttyUSB0
+% COM9
+% chmodの上で指定
+/dev/ttyUSB0
 %/dev/cu.SLAB_USBtoUART
 % BaudRate
 115200
