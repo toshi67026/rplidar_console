@@ -1,0 +1,3 @@
+[submodule "Hardware-MATLAB"]
+	path = Hardware-MATLAB
+	url = git@github.com:ENSTABretagneRobotics/Hardware-MATLAB.git
